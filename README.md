@@ -52,6 +52,10 @@ cargo init .  --bin --name=config
 
     - critical-section-single-core: 只支持单核 MCU 的临界区实现
     - inline-asm: 支持内联汇编
+    
+    ```bash
+    cargo add cortex-m-rt
+    ```
 
 2. 不用教程里面传统的同步框架， 采用现代化的异步框架 [embassy](https://github.com/embassy-rs/embassy)，必须指定 features
 
@@ -149,6 +153,14 @@ fn main() {
 
 > 如果开启了embassy-stm32的memory-x feature，那么就需要移除memory.x相关的配置，使用embassy内置的。
 
+### 烧录 hex 文件
+
+针对 keil 生成的 hex 文件
+
+```bash
+probe-rs download --binary-format hex test.hex  --chip STM32F407ZG
+```
+
 ### issue
 
 - 烧录的时候记得硬件复位
@@ -171,3 +183,38 @@ fn main() {
         test = false
         bench = false
         ```
+
+## tutorial
+
+运行文件都放到 src/bin 目录下, 采用 `t_num_name.rs` 命名方式
+
+如果配置了
+
+```toml
+[[bin]]
+name = "blink"
+path = "src/bin/t_00_blink.rs"
+test = false
+```
+
+则可以直接运行
+
+```bash
+cargo run --bin blink
+```
+ 
+如果是用了 lib.rs 这样的入口文件，则一定要声明 `#![no_std]`
+
+```rust
+// lib.rs
+#![no_std]
+```
+
+### blink
+
+推挽输出在 Output 空间下面
+
+```rust
+let mut led0 = Output::new(p.PF9, Level::High, Speed::High);
+```
+
