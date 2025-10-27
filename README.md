@@ -218,3 +218,14 @@ cargo run --bin blink
 let mut led0 = Output::new(p.PF9, Level::High, Speed::High);
 ```
 
+### led
+
+引入 embassy_hal_internal 这个库用来作封装
+
+### beep
+
+推挽输出
+
+### key
+
+输入
