@@ -18,3 +18,19 @@ panic-probe = { version = "1.0.0", features = ["print-defmt"] }
 name = "blink"
 path = "src/bin/t_00_blink.rs"
 test = false
+
+[[bin]]
+name = "led"
+path = "src/bin/t_01_led.rs"
+test = false
+
+[[bin]]
+name = "beep"
+path = "src/bin/t_02_beep.rs"
+test = false
+
+[[bin]]
+name = "key"
+path = "src/bin/t_03_key.rs"
+test = false
+
