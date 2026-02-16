@@ -818,6 +818,7 @@ dependencies = [
  "embassy-executor",
  "embassy-hal-internal 0.4.0",
  "embassy-stm32",
+ "embassy-sync",
  "embassy-time",
  "panic-probe",
 ]
