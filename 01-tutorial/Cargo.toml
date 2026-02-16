@@ -54,3 +54,8 @@ test = false
 name = "usart_blocking"
 path = "src/bin/t_05_usart_blocking.rs"
 test = false
+
+[[bin]]
+name = "usart_dma"
+path = "src/bin/t_05_usart_dma.rs"
+test = false
