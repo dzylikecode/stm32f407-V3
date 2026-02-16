@@ -44,3 +44,9 @@ test = false
 name = "exti_task"
 path = "src/bin/t_04_exti_task.rs"
 test = false
+
+[[bin]]
+name = "usart"
+path = "src/bin/t_05_usart.rs"
+test = false
+
