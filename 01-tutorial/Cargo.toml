@@ -50,3 +50,7 @@ name = "usart"
 path = "src/bin/t_05_usart.rs"
 test = false
 
+[[bin]]
+name = "usart_blocking"
+path = "src/bin/t_05_usart_blocking.rs"
+test = false
