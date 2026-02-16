@@ -229,3 +229,16 @@ let mut led0 = Output::new(p.PF9, Level::High, Speed::High);
 ### key
 
 输入
+
+### 外部中断
+
+| EXTI线     | 中断函数                 |
+| --------- | -------------------- |
+| EXTI0     | EXTI0_IRQHandler     |
+| EXTI1     | EXTI1_IRQHandler     |
+| EXTI2     | EXTI2_IRQHandler     |
+| EXTI3     | EXTI3_IRQHandler     |
+| EXTI4     | EXTI4_IRQHandler     |
+| EXTI5–9   | EXTI9_5_IRQHandler   |
+| EXTI10–15 | EXTI15_10_IRQHandler |
+
