@@ -9,8 +9,6 @@ use {defmt_rtt as _, panic_probe as _};
 
 bind_interrupts!(struct Irqs {
     USART1 => usart::InterruptHandler<peripherals::USART1>;
-    DMA2_STREAM7 => dma::InterruptHandler<peripherals::DMA2_CH7>;
-    DMA2_STREAM5 => dma::InterruptHandler<peripherals::DMA2_CH5>;
 });
 
 #[embassy_executor::main]
