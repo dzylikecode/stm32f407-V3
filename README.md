@@ -216,6 +216,8 @@ cargo run --bin blink
 
 ```rust
 let mut led0 = Output::new(p.PF9, Level::High, Speed::High);
+led0.set_low();
+led0.set_high();
 ```
 
 ### led
@@ -229,3 +231,9 @@ let mut led0 = Output::new(p.PF9, Level::High, Speed::High);
 ### key
 
 输入
+
+```rust
+let key = Input::new(p.PA0, Pull::Up);
+key.is_high();
+key.is_low();
+```
