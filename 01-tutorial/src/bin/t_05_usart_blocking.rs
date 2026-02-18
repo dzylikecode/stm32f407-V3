@@ -30,6 +30,7 @@ fn main() -> ! {
         match usart.blocking_read(&mut buf) {
             Ok(_) => {
                 // 读取成功，回显接收到的数据
+                info!("Received: {:?}", buf[0] as char);
                 match usart.blocking_write(&buf) {
                     Ok(_) => {},
                     Err(e) => defmt::warn!("Write error: {:?}", e),

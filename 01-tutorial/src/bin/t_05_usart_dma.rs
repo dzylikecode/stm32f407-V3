@@ -11,7 +11,7 @@ use heapless::String;
 use {defmt_rtt as _, panic_probe as _};
 
 bind_interrupts!(struct Irqs {
-    USART3 => usart::InterruptHandler<peripherals::USART3>;
+    USART1 => usart::InterruptHandler<peripherals::USART1>;
 });
 
 #[embassy_executor::main]
@@ -20,7 +20,7 @@ async fn main(_spawner: Spawner) {
     info!("Hello World!");
 
     let config = Config::default();
-    let mut usart = Uart::new(p.USART3, p.PD9, p.PD8, Irqs, p.DMA1_CH3, p.DMA1_CH1, config).unwrap();
+    let mut usart = Uart::new( p.USART1, p.PA10, p.PA9, Irqs, p.DMA2_CH7, p.DMA2_CH2, config,).unwrap();
 
     for n in 0u32.. {
         let mut s: String<128> = String::new();
