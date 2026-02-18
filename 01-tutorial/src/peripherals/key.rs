@@ -1,5 +1,5 @@
 use embassy_hal_internal::Peri;
-use embassy_stm32::gpio::{Input, Pin, Pull, Speed};
+use embassy_stm32::gpio::{Input, Pin, Pull};
 pub struct Key<'d> {
     input: Input<'d>,
 }
