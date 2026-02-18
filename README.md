@@ -242,3 +242,6 @@ let mut led0 = Output::new(p.PF9, Level::High, Speed::High);
 | EXTI5–9   | EXTI9_5_IRQHandler   |
 | EXTI10–15 | EXTI15_10_IRQHandler |
 
+### DMA
+
+需要自己查芯片
