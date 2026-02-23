@@ -2,6 +2,12 @@
 
 推荐入门：[教程](https://logiase.github.io/The-Embedded-Rust-Book-CN/intro/index.html) | [原文](https://docs.rust-embedded.org/book/index.html)
 
+
+推荐例子：[stm32f4xx-hal](https://github.com/embassy-rs/embassy/tree/embassy-stm32-v0.5.0/examples/stm32f4/src/bin)
+
+> 要和版本对应，main 分支下的例子不一定符合发布版本的库
+
+
 ## 硬件
 
 - Cortex-M3 架构
