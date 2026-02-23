@@ -1,3 +1,4 @@
 ref_code/
 target
 *.db
+.vscode/

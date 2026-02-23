@@ -101,6 +101,8 @@ cargo init .  --bin --name=config
     - defmt-timestamp-uptime: defmt 日志的时间戳自动来自系统运行时间（Uptime）
     - tick-hz-32_768: 设置 tick 频率为 32768Hz（RTC 常用低功耗时钟）提升定时精度
 
+6. heapless 用于嵌入式系统的无堆内存数据结构
+
 ### 编译
 
 编译可以命令行执行
