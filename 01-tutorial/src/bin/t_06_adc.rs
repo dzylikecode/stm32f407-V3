@@ -11,7 +11,7 @@ use {defmt_rtt as _, panic_probe as _};
 
 const ADC_MAX: f32 = 4095.0; // 12-bit
 const VREF: f32 = 3.3; // 你 C 代码里用的 3.3V
-const DMA_BUF_SIZE: usize = 50; // 对应你 C 里的 ADC_DMA_BUF_SIZE=50
+const DMA_BUF_SIZE: usize = 100; // 对应你 C 里的 ADC_DMA_BUF_SIZE=50
 
 #[embassy_executor::main]
 async fn main(spawner: Spawner) -> ! {
@@ -58,10 +58,22 @@ async fn adc_dma_task(p: Peripherals) {
         // === 等价 adc_dma_enable(ADC_DMA_BUF_SIZE) + 等待 DMA 完成 ===
         match adc.read(&mut out).await {
             Ok(n) => {
-                // 一般 n 会等于 DMA_BUF_SIZE
-                let data = &out[..n];
+                // n 可能大于 out.len()，这里做边界保护，避免切片越界
+                let valid_n = core::cmp::min(n, out.len());
+                if n > out.len() {
+                    warn!(
+                        "ADC DMA returned n={} > out.len()={}, clamped to {}",
+                        n,
+                        out.len(),
+                        valid_n
+                    );
+                }
+                if valid_n == 0 {
+                    warn!("ADC DMA returned empty block");
+                    continue;
+                }
+                let data = &out[..valid_n];
 
-                // === 等价 C 里 sum += g_adc_dma_buf[i]; adc = sum / BUF_SIZE; ===
                 let mut sum: u32 = 0;
                 for &v in data {
                     sum += v as u32;
@@ -88,6 +100,6 @@ async fn adc_dma_task(p: Peripherals) {
         }
 
         // 等价你 C 里 delay_ms(100)
-        Timer::after(Duration::from_millis(100)).await;
+        // Timer::after(Duration::from_millis(100)).await;
     }
 }
