@@ -44,6 +44,7 @@ async fn adc_dma_task(p: Peripherals) {
         [
             // ⚠️ 改成你实际的 ADC1_CH5 引脚
             // 采样时间等价 ADC_SAMPLETIME_480CYCLES
+            // 这里可以设置多个通道
             (p.PA5.degrade_adc(), SampleTime::CYCLES480),
         ]
         .into_iter(),
